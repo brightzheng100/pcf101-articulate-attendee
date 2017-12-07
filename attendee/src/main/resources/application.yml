@@ -1,0 +1,38 @@
+server:
+  port: 8181
+
+spring:
+  application:
+    name: attendee-service
+  jpa:
+    generate-ddl: true
+  profiles: 
+    active: test
+
+---
+spring:
+  profiles: local
+  datasource:
+    url: jdbc:mysql://localhost/testdb
+    username: root
+    password:
+    driverClassName: com.mysql.jdbc.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+    generate-ddl: true
+
+---
+spring:
+  profiles: test
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: sa
+    driverClassName: org.h2.Driver
+    platform: h2
+  jpa:
+    generate-ddl: true
+  h2:
+    console:
+      enabled: true
+
+      

@@ -1,0 +1,26 @@
+logging:
+  level:
+    io:
+      pivotal: INFO
+
+spring:
+  application:
+    name: articulate
+
+articulate:
+  attendee-service:
+    uri: http://localhost:8181
+
+# Using macros that are replaced by maven build
+info:
+  build:
+    artifact: @project.artifactId@
+    name: @project.name@
+    description: @project.description@
+    version: @project.version@
+
+management:
+  security:
+    enabled: false
+  cloudfoundry:
+    skip-ssl-validation: true

@@ -1,0 +1,31 @@
+---
+
+jobs:
+- name: deployment
+  plan:
+  - get: resource-git
+    trigger: true
+  - put: resource-pcf
+    params:
+      manifest: resource-git/manifest-with-service.yml
+      path: resource-git
+      current_app_name: ((app-name))
+
+##############################
+resources:
+# GIT
+- name: resource-git
+  type: git
+  source:
+    uri: https://github.com/brightzheng100/pcf101-articulate-attendee
+    branch: master
+# CF
+- name: resource-pcf
+  type: cf
+  source:
+    api: ((pcf-api))
+    username: ((pcf-username))
+    password: ((pcf-password))
+    organization: ((pcf-organization))
+    space: ((pcf-space))
+    skip_cert_check: true

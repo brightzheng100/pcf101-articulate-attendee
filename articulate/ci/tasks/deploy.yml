@@ -1,0 +1,24 @@
+---
+platform: linux
+image_resource:
+  type: docker-image
+  source:
+    repository: concourse/cf-resource
+    tag: latest
+
+inputs:
+- name: resource-git
+
+run:
+  path: sh
+  args:
+  - -exc
+  - |
+    cd resource-git \
+    && cf api ${api} --skip-ssl-validation \
+    && cf login -u ${username} -p ${password} -o ${organization} -s ${space} \
+    && cf rename ${app_name} ${app_name}-existing \
+    && cf push ${app_name} -f ${manifest} --no-start \
+    && cf start ${app_name} \
+    && cf map-route ${app_name} ${domain} --hostname ${app_host} \
+    && cf delete -f ${app_name}-existing

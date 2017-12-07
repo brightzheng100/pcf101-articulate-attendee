@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/layout :: head">
+</head>
+
+<body>
+
+	<nav th:replace="fragments/layout :: navigation"></nav>
+
+	<!--  PAGE BODY -->
+	<div class="container" role="main">
+
+		<span id="tutorialName" style="display: none;">index</span>
+
+		<div class="page-header">
+			<p>&nbsp;</p>
+			<h1>This is Articulate!</h1>
+		</div>
+
+		<div class="row ">
+			<div class="col-md-6">
+
+				<p>The purpose of this application is to articulate some basic
+					concepts and capabilities of the Pivotal Cloud Foundry platform, specifically
+					the Elastic Runtime which is responsible for running application workloads.</p>
+				<h3>Application Architecture</h3>
+				<p><code>articulate</code> is a web application that exposes friendly, browsable user interface.  However, it does not work with data directly.  It depends on the <code>attendee-service</code> application to manage data.  The <code>attendee-service</code> persists data to a MySQL database.</p>
+				<img src="/images/index2.png"
+									class="img-rounded img-responsive center-block" alt="Cinque Terre"
+									width="600" height="200" />
+				<h3>How to use this Application</h3>
+				<p>
+					Each menu item above links to a page that helps demonstrate a set
+					of capabilities provided by the platform. The last item, Spring Boot, highlights capabilities that come with <a href="http://projects.spring.io/spring-boot/" target="_blank">Spring Boot</a> to help build production ready microservices in minutes.
+				</p>
+				<p>Each page has the same layout with the Accordion control and up to 3 groups:</p>
+				<ol>
+					<li><b>Application Environment Information</b> - This provides
+						information about the application environment when running inside
+						PCF. You can see the Application Name, Container and Services
+						information. This is useful to show things like load balancing,
+						self healing, service binding among other things.</li>
+					<li><b>Description</b> - additional context for the given page.</li>
+					<li><a  target="_blank" href="http://12factor.net/">The Twelve-Factor App</a> - a methodology for building modern, scalable applications. Links to applicable factors will be provided. </li>
+
+				</ol>
+			</div>
+
+			<div class="col-md-6">
+				<div th:replace="fragments/layout :: tutorial"></div>
+			</div>
+
+		</div>
+
+
+	</div>
+	<!--  /.PAGE BODY -->
+
+	<footer th:replace="fragments/layout :: footer" class="footer">
+	</footer>
+
+	<script th:replace="fragments/layout :: app-instance-script"></script>
+
+</body>
+
+</html>
