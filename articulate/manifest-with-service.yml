@@ -1,9 +1,9 @@
 applications:
 - name: articulate
   path: target/articulate-1.0.0.jar
-  memory: 512M
+  instances: 1
+  memory: 1G
   random-route: true
   #host: articulate
-  instances: 1
   services:
   - attendee-service
