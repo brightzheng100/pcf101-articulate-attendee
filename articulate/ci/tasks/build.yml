@@ -1,0 +1,22 @@
+---
+platform: linux
+image_resource:
+  type: docker-image
+  source:
+    repository: concourse/cf-resource
+    tag: latest
+
+inputs:
+- name: resource-git
+
+outputs:
+- name: artifacts
+
+run:
+  path: sh
+  args:
+  - -exc
+  - |
+    cd resource-git \
+    && ./mvnw package -f articulate/pom.xml \
+    && cp articulate/target/articulate-*.jar ../artifacts/

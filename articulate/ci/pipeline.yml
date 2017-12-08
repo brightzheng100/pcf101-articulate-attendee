@@ -1,14 +1,19 @@
 ---
 
 jobs:
-- name: deployment
+- name: build-and-deployment
   plan:
+  # Get Git Repo
   - get: resource-git
     trigger: true
+  # Build Artifacts
+  - task: build-artifacts
+    file: resource-git/articulate/ci/tasks/build.yml
+  # Deploy It To PCF
   - put: resource-pcf
     params:
-      manifest: resource-git/manifest-with-service.yml
-      path: resource-git
+      manifest: resource-git/articulate/manifest-with-service.yml
+      path: artifacts/articulate-*.jar
       current_app_name: ((app-name))
 
 ##############################

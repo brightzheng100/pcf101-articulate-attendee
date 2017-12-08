@@ -1,10 +1,15 @@
 ---
 
 jobs:
-- name: deployment
+- name: build-and-deployment
   plan:
+  # Get Git Repo
   - get: resource-git
     trigger: true
+  # Build Artifacts
+  - task: build-artifacts
+    file: resource-git/articulate/ci/tasks/build.yml
+  # Deploy to PCF
   - task: deploy-to-pcf
     file: resource-git/ci/tasks/deploy.yml
     params:
