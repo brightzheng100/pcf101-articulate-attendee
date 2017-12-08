@@ -3,8 +3,8 @@ platform: linux
 image_resource:
   type: docker-image
   source:
-    repository: maven:3-jdk-8-alpine
-    tag: latest
+    repository: maven
+    tag: 3-jdk-8-alpine
 
 inputs:
 - name: resource-git
