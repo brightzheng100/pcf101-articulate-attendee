@@ -1,7 +1,7 @@
 applications:
-- name: articulate
+- name: pcf101-demo-articulate
   path: target/articulate-1.0.0.jar
   instances: 1
   memory: 1G
-  random-route: true
-  #host: articulate
+  #random-route: true
+  host: pcf101-demo-articulate

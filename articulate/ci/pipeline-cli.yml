@@ -9,7 +9,7 @@ jobs:
   # Build Artifacts
   - task: build-artifacts
     file: resource-git/articulate/ci/tasks/build.yml
-  # Deploy to PCF
+  # Deploy It To PCF
   - task: deploy-to-pcf
     file: resource-git/ci/tasks/deploy.yml
     params:
