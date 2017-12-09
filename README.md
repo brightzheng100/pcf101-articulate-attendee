@@ -33,6 +33,7 @@ will be serving on port `8181`, which is exactly the default setting in `articul
 
 
 Go to the http://localhost:8080 in your browser and you should see below screen:
+
 ![Landing Page](misc/articulate-landing-page.png)
 
 
@@ -57,6 +58,11 @@ $ cf bind-service articulate attendee-service
 $ cf restage articulate
 ```
 
+You can visit the `articulate` app by visiting the route generated:
+
+![Landing Page](misc/articulate-landing-page-pcf.png)
+
+
 > Tips: 
 > 1. It's recommended to try out [Pivotal Web Services](https://run.pivotal.io)
 > 2. Please refer to `articulate/manifest-with-service.yml` for how to add service binding directly
@@ -72,7 +78,8 @@ $ cf bind-service attendee <MYSQL_SERVICE_INSTANCE_NAME>
 $ cf restage attendee
 ```
 
-## CI/CI By Concourse
+
+## CI/CD By Concourse
 
 There is CI/CD pipeline for [Concourse](http://concourse.ci) built in.
 ![Concourse CI/CD Pipeline](misc/pipeline.png)
