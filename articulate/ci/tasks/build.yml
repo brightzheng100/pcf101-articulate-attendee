@@ -12,11 +12,15 @@ inputs:
 outputs:
 - name: artifacts
 
+
+caches:
+  - path: .m2/
+
 run:
   path: sh
   args:
   - -exc
   - |
     cd resource-git \
-    && ./mvnw package -f articulate/pom.xml \
+    && mvn package -f articulate/pom.xml \
     && cp articulate/target/articulate-*.jar ../artifacts/
