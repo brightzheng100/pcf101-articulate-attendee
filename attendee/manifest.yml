@@ -3,5 +3,5 @@ applications:
   path: target/attendee-1.0.0.jar
   instances: 1
   memory: 768M
-  random-route: true
-  #host: pcf101-demo-attendee
+  #random-route: true
+  host: pcf101-demo-attendee
