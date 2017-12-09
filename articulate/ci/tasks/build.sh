@@ -12,7 +12,7 @@ mkdir -p ${MAVEN_REPO}
 
 # Construct the Maven settings.xml
 
-cat > ${M2_HOME}/settings.xml <<EOF
+cat > ${MAVEN_HOME}/settings.xml <<EOF
 <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
