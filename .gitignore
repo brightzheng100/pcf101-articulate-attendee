@@ -4,3 +4,7 @@ _*
 .idea
 **/*.iml
 **/*.imp
+
+**/.project
+**/.classpath
+**/.settings/
