@@ -10,9 +10,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -35,6 +37,12 @@ public class ArticulateController {
   public String index(HttpServletRequest request, Model model) throws Exception {
     addAppEnv(request, model);
     return "index";
+  }
+  
+  @RequestMapping("/health")
+  @ResponseBody
+  public String health() {
+    return "Healthy: " + new Date();
   }
 
   @RequestMapping(value = "/basics", method = RequestMethod.GET)
