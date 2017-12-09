@@ -38,6 +38,12 @@ public class ArticulateController {
     addAppEnv(request, model);
     return "index";
   }
+  
+  @RequestMapping("/ping")
+  @ResponseBody
+  public String health() {
+    return "pong: " + new Date();
+  }
 
   @RequestMapping(value = "/basics", method = RequestMethod.GET)
   public String kill(HttpServletRequest request,
