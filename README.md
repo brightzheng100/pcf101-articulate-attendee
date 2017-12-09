@@ -75,11 +75,28 @@ $ cf restage attendee
 ## CI/CI By Concourse
 
 There is CI/CD pipeline for [Concourse](http://concourse.ci) built in.
+![Concourse CI/CD Pipeline](misc/pipeline.png)
+
 To try it out:
 
 ```
-$ 
+$ vi ../_vars.yml
+$ fly -t concourse set-pipeline -p pcf101-articulate-attendee -c articulate/ci/pipeline.yml -l ../_vars.yml
 ```
+
+> Note: Below is the sample `_vars.yml`:
+```
+app-name: articulate
+app-host: articulate
+
+pcf-api: <PCF API ENDPOINT>
+pcf-username: <PCF USER>
+pcf-password: <PCF PASSWORD>
+pcf-domain: <PCF APP DOMAIN>
+pcf-organization: <PCF ORG>
+pcf-space: <PCF SPACE>
+```
+
 
 
 ## Clean Up
