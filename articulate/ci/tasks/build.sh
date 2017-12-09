@@ -3,12 +3,10 @@ set -e
 
 echo "start building artifacts by Maven..."
 
-# Use a dedicated folder outside the build folder so reuse becomes possible
-
 M2_HOME=${HOME}/.m2
 mkdir -p ${M2_HOME}
 
-M2_LOCAL_REPO="$( pwd )/.m2"
+M2_LOCAL_REPO=${M2_HOME}
 mkdir -p "${M2_LOCAL_REPO}/repository"
 
 cat > ${M2_HOME}/settings.xml <<EOF
