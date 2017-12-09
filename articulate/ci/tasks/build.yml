@@ -26,4 +26,5 @@ run:
     && cd resource-git \
     && mvn package -f articulate/pom.xml \
     && cp articulate/target/articulate-*.jar ../artifacts/ \
-    && ls -lat ../artifacts/
+    && cd ../../ \
+    && ls -lat artifacts/
