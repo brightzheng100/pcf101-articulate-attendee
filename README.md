@@ -53,19 +53,20 @@ Copy the route generated for `attendee` app and it's time to let `articulate` ap
 
 ```
 $ cf cups pcf101-demo-attendee-service -p uri
-    uri> <KEY IN URL OF ATTENDEE APP AND ENTER, e.g. https://pcf101-demo-attendee.apps.mycompany.com/>
+    uri> <KEY IN URL OF ATTENDEE APP + "/attendees" AND ENTER, e.g. https://pcf101-demo-attendee.apps.mycompany.com/attendees>
 $ cf bind-service pcf101-demo-articulate pcf101-demo-attendee-service
 $ cf restage pcf101-demo-articulate
 ```
 
 You can visit the `articulate` app by visiting the route generated:
 
-![Landing Page](misc/articulate-landing-page-pcf.png)
+![Landing Page on PCF](misc/articulate-landing-page-pcf.png)
 
 
 > Tips: 
-> 1. It's recommended to try out [Pivotal Web Services](https://run.pivotal.io)
-> 2. Please refer to `articulate/manifest-with-service.yml` for how to add service binding directly
+> 1. It's recommended to try it out in [Pivotal Web Services](https://run.pivotal.io)
+> 2. To simplify the process, please refer to `start.sh` for how to make all these in one simple command
+> 3. Please refer to `articulate/manifest-with-service.yml` for how to add service binding directly
 > within the yaml file so that the service binding process can be fully automated.
 
 
@@ -77,6 +78,33 @@ $ cf create-service <MYSQL SERVICE> <MYSQL PLAN> <MYSQL_SERVICE_INSTANCE_NAME>
 $ cf bind-service pcf101-demo-attendee <MYSQL_SERVICE_INSTANCE_NAME>
 $ cf restage pcf101-demo-attendee
 ```
+
+## Blue Green Deployment
+
+As PCF has layered routing mechanism and provides powerful APIs for the routing control, blue-green deployment becomes very straightforward:
+
+```
+$ DOMAIN=<YOUR APPS DOMAIN>
+$ cf push -f articulate/manifest-v2.yml --no-route
+$ cf map-route pcf101-demo-articulate-v2 ${DOMAIN} -n pcf101-demo-articulate
+
+$ cf scale pcf101-demo-articulate -i 1
+$ cf scale pcf101-demo-articulate-v2 -i 3
+
+$ cf unmap-route pcf101-demo-articulate ${DOMAIN} -n pcf101-demo-articulate
+```
+
+Eventually we can delete the old version of app and rename the new version:
+
+```
+$ cf delete pcf101-demo-articulate -f
+$ cf rename pcf101-demo-articulate-v2 pcf101-demo-articulate
+```
+
+The `articulate` app provides good illustration about the blue-green process.
+
+![Blue-green Deployment](misc/blue-green.png)
+
 
 
 ## CI/CD By Concourse
