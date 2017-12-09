@@ -69,15 +69,16 @@ public class AttendeeService {
     }
   }
 
-
   @HystrixCommand
   public void add(Attendee attendee) {
+    logger.debug("=====endpint: {}", this.endpoint);
     ResponseEntity<Attendee> responseEntity = restTemplate.postForEntity(endpoint, attendee, Attendee.class);
     logger.debug("ResponseEntity<Attendee>: {}", responseEntity);
   }
 
   @HystrixCommand(fallbackMethod = "defaultList")
   public List<Attendee> getAttendees() {
+    logger.debug("=====endpint: {}", this.endpoint);
     try {
       ResponseEntity<PagedResources<Attendee>> responseEntity = restTemplate.exchange(
           endpoint, GET, getHttpEntity(), new ParameterizedTypeReference<PagedResources<Attendee>>() {
