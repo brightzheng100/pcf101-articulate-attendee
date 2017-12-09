@@ -22,14 +22,11 @@ run:
   - -exc
   - |
     echo "start building artifacts..." \
-
     && M2_HOME=${HOME}/.m2 \
     && mkdir -p ${M2_HOME} \
-
     && export ROOT_FOLDER=$( pwd ) \
     && M2_LOCAL_REPO="${ROOT_FOLDER}/.m2" \
     && mkdir -p "${M2_LOCAL_REPO}/repository" \
-
     && cat > ${M2_HOME}/settings.xml <<EOF
       <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -38,7 +35,6 @@ run:
             <localRepository>${M2_LOCAL_REPO}/repository</localRepository>
       </settings>
       EOF \
-
     && mvn package -f resource-git/articulate/pom.xml \
     && cp resource-git/articulate/target/articulate-*.jar artifacts/ \
     && ls -lat artifacts/
