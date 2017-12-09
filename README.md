@@ -52,10 +52,10 @@ Now they're working independently.
 Copy the route generated for `attendee` app and it's time to let `articulate` app talks to `attendee` service:
 
 ```
-$ cf cups attendee-service -p uri
-    uri> <KEY IN URL OF ATTENDEE APP AND ENTER, e.g. https://attendee.apps.mycompany.com/>
-$ cf bind-service articulate attendee-service
-$ cf restage articulate
+$ cf cups pcf101-demo-attendee-service -p uri
+    uri> <KEY IN URL OF ATTENDEE APP AND ENTER, e.g. https://pcf101-demo-attendee.apps.mycompany.com/>
+$ cf bind-service pcf101-demo-articulate pcf101-demo-attendee-service
+$ cf restage pcf101-demo-articulate
 ```
 
 You can visit the `articulate` app by visiting the route generated:
@@ -74,8 +74,8 @@ If you want to use MySQL, it's just some commands away:
 
 ```
 $ cf create-service <MYSQL SERVICE> <MYSQL PLAN> <MYSQL_SERVICE_INSTANCE_NAME>
-$ cf bind-service attendee <MYSQL_SERVICE_INSTANCE_NAME>
-$ cf restage attendee
+$ cf bind-service pcf101-demo-attendee <MYSQL_SERVICE_INSTANCE_NAME>
+$ cf restage pcf101-demo-attendee
 ```
 
 
@@ -88,13 +88,13 @@ To try it out:
 
 ```
 $ vi ../_vars.yml
-$ fly -t concourse set-pipeline -p pcf101-articulate-attendee -c articulate/ci/pipeline.yml -l ../_vars.yml
+$ fly -t concourse set-pipeline -p pcf101-demo-articulate-attendee -c articulate/ci/pipeline.yml -l ../_vars.yml
 ```
 
 > Note: Below is the sample `_vars.yml`:
 ```
-app-name: articulate
-app-host: articulate
+app-name: pcf101-demo-articulate
+app-host: pcf101-demo-articulate
 
 pcf-api: <PCF API ENDPOINT>
 pcf-username: <PCF USER>
@@ -111,9 +111,9 @@ pcf-space: <PCF SPACE>
 To clean up the env, simply issue below commands:
 
 ```
-$ cf delete articulate -r
-$ cf delete attendee -r
-$ cf delete-service attendee-service
+$ cf delete pcf101-demo-articulate -r
+$ cf delete pcf101-demo-attendee -r
+$ cf delete-service pcf101-demo-attendee-service
 ```
 
 # Credits
