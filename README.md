@@ -12,9 +12,12 @@ Some scenarios like below will be covered:
 
 2. Service mindset by `cf create-service`
 
+3. Blue-green deployment
+
 
 Meanwhile, I also create the CI / CD pipelines for `articulate` application 
 by using [Concourse](http://concourse.io).
+
 
 
 ## To run the applications locally
@@ -35,6 +38,7 @@ will be serving on port `8181`, which is exactly the default setting in `articul
 Go to the http://localhost:8080 in your browser and you should see below screen:
 
 ![Landing Page](misc/articulate-landing-page.png)
+
 
 
 ## To Run on Cloud Foundry
@@ -79,6 +83,8 @@ $ cf bind-service pcf101-demo-attendee <MYSQL_SERVICE_INSTANCE_NAME>
 $ cf restage pcf101-demo-attendee
 ```
 
+
+
 ## Blue Green Deployment
 
 As PCF has layered routing mechanism and provides powerful APIs for the routing control, blue-green deployment becomes very straightforward:
@@ -105,6 +111,10 @@ The `articulate` app provides good illustration about the blue-green process.
 
 ![Blue-green Deployment](misc/blue-green.png)
 
+
+> Tips: 
+> 1. This process can be significantly simplified if you use `Autopilot` CF plugin, see [here](https://github.com/contraband/autopilot);
+> 2. Refer to [bluegreen-autopilot.sh](./bluegreen-autopilot.sh) for how to use `Autopilot` to perform blue-green deployment
 
 
 ## CI/CD By Concourse
