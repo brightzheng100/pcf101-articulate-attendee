@@ -53,6 +53,17 @@
       <artifactId>spring-boot-starter-cloud-connectors</artifactId>
     </dependency>
 
+    <!-- sleuth for zipkin trace-->
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-sleuth</artifactId>
+    </dependency>
+    <!--
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-sleuth-zipkin</artifactId>
+    </dependency>-->
+
     <dependency>
       <groupId>org.webjars</groupId>
       <artifactId>jquery</artifactId>
