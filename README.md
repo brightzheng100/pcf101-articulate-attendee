@@ -111,7 +111,6 @@ The `articulate` app provides good illustration about the blue-green process.
 
 ![Blue-green Deployment](misc/blue-green.png)
 
-
 > Tips: 
 > 1. This process can be significantly simplified if you use `Autopilot` CF plugin, see [here](https://github.com/contraband/autopilot);
 > 2. Refer to [bluegreen-autopilot.sh](./bluegreen-autopilot.sh) for how to use `Autopilot` to perform blue-green deployment
