@@ -1,0 +1,9 @@
+applications:
+- name: pcf101-demo-articulate
+  path: target/articulate-1.0.0.jar
+  instances: 2
+  memory: 1G
+  #random-route: true
+  host: pcf101-demo-articulate
+  services:
+  - pcf101-demo-attendee-service
