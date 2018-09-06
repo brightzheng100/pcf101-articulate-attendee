@@ -1,0 +1,11 @@
+---
+platform: linux
+
+inputs:
+  - name: resource-git
+
+run:
+  path: resource-git/articulate/ci/tasks/smoke-tests.sh
+
+params:
+  app_url:
