@@ -4,4 +4,4 @@ applications:
   instances: ((articulate_app_instances))
   memory: 800M
   routes:
-  - ((articulate_app_route))
+  - route: ((articulate_app_route))
