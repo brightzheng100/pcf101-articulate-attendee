@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-get_code="curl -I ${app_url} 2>/dev/null | head -n 1 | cut -d$' ' -f2"
+get_code="curl -k -I ${app_url} 2>/dev/null | head -n 1 | cut -d$' ' -f2"
 status_code=`eval $get_code`
 echo "The status code returned is: $status_code"
 
