@@ -1,7 +1,7 @@
 applications:
-- name: articulate-bright
+- name: ((app_name))
   path: target/articulate-1.0.0.jar
   instances: 2
   memory: 800M
   routes:
-  - route: articulate-bright.apps.pcf-dev.int.21cineplex.com
+  - route: ((articulate_app_route))
