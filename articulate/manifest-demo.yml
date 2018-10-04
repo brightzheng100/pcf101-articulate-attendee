@@ -1,7 +1,7 @@
 applications:
-- name: ((app_name))
+- name: articulate-bright
   path: target/articulate-1.0.0.jar
   instances: 2
   memory: 800M
   routes:
-  - route: ((articulate_app_route))
+  - route: articulate-bright.apps.dev.pcf-aws.com
