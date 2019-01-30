@@ -4,4 +4,4 @@ applications:
   instances: 2
   memory: 800M
   routes:
-  - route: articulate-bright.apps.dev.pcf-aws.com
+  - route: articulate-bright.cfapps.io
